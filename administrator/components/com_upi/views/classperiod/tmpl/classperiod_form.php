@@ -272,8 +272,9 @@ $select_3 = preg_replace('/\s+/', ' ', trim($select_3));
 				e.preventDefault();
 			 })
 			
-			 $( ".remove_field" ).live( "click", function() {
+			 $( ".remove_field" ).live( "click", function(e) {
 				 $(this).closest('tr').remove();
+				 e.preventDefault();
 			 })
 			 
 			 
@@ -298,7 +299,7 @@ $select_3 = preg_replace('/\s+/', ' ', trim($select_3));
 						var select_period_id = $( this ).find( "select[name='period_id[]']" ).val();
 						var select_teacher_id = $( this ).find( "select[name='teacher_id[]']" ).val();
 						var select_tutor_id = $( this ).find( "select[name='tutor_id[]']" ).val();
-						console.log(select_tutor_id);
+						//console.log(select_tutor_id);
 					
 						if ( select_period_id && select_teacher_id && select_tutor_id ){
 							 jsonObj.push({

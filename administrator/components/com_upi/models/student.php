@@ -282,6 +282,7 @@ class UpiModelStudent extends UpiClassModelItem
 
 				//JOIN
 				$this->addJoin('`#__upi_grades` AS _grade_id_ ON _grade_id_.id = a.grade_id', 'LEFT');
+				
 
 				break;
 			case 'all':

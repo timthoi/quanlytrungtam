@@ -329,7 +329,110 @@ class UpiControllerStudent extends UpiClassControllerItem
 			if ($this->model)
 			{
 				$model = $this->model;
-				$item = $model->getItem();	
+				$item = $model->getItem();
+
+
+				//save upi_student_classperiods				
+				
+				//delete before save
+				//1- check is exist in studen_classperiod
+				$list_students = UpiHelper::getClassperiods($item->id);
+				$classperiod_id = JRequest::getVar( 'classperiod_id', '', 'post', 'array' );
+				$register_date = JRequest::getVar( 'register_date', '', 'post', 'array' );
+				//insert second time
+				if ( $list_students ){
+					$arr_1 = array();
+					foreach ($list_students as $s){
+						$arr_1[] = $s->classperiod_id;
+					}
+					
+					$arr_2 = $classperiod_id;
+					//common
+					$common_arr = array_intersect($arr_1, $arr_2);
+					$diff_arr_1 = array_diff($arr_1, $arr_2);
+					$diff_arr_2 = array_diff($arr_2, $arr_1);
+					$join_arr = array_merge($common_arr,$diff_arr_2);
+					
+					
+					if ( $diff_arr_1!=$diff_arr_2 ){
+						//delete old
+						if ( $diff_arr_1 ){
+							foreach ( $diff_arr_1 as $t ){
+								$db = JFactory::getDbo();
+								$query = $db->getQuery(true);
+								$conditions = array(
+									$db->quoteName('student_id') . ' = '.$db->quote($item->id), 
+									$db->quoteName('classperiod_id') . ' = ' . $db->quote($t)
+								);
+								$query->delete($db->quoteName('#__upi_student_classperiods'));
+								$query->where($conditions);
+								$db->setQuery($query);
+								$result_delete = $db->execute();
+							}
+						}
+						//insert new
+						if ( $diff_arr_2 ){
+							$obj = new stdClass();
+							$obj->student_id = $item->id;
+							$obj->created_by = $item->created_by;
+							$obj->creation_date = $item->creation_date;
+							$obj->published = 1;	
+							//paid or not paid
+							$obj->status = 0;
+							foreach ( $diff_arr_2 as $t ){
+								$obj->classperiod_id = $t;
+								$obj->register_date	 = date("Y-m-d");
+								$result_insert = JFactory::getDbo()->insertObject('#__upi_student_classperiods', $obj);
+							}
+						}
+					}
+					//update
+					for ( $i=0;$i<count($join_arr);$i++ ){
+						$date = DateTime::createFromFormat('d/m/Y', $register_date[$i]);
+						
+						$db = JFactory::getDbo();
+						$query = $db->getQuery(true);
+						// Fields to update.
+						$fields = array(
+							$db->quoteName('register_date') . ' = '.$db->quote( $date->format('Y-m-d')),
+						);
+
+						// Conditions for which records should be updated.
+						$conditions = array(
+							$db->quoteName('student_id') . ' = '.$db->quote($item->id), 
+							$db->quoteName('classperiod_id') . ' = ' . $db->quote($join_arr[$i])
+						);
+
+						$query->update($db->quoteName('#__upi_student_classperiods'))->set($fields)->where($conditions);
+						$db->setQuery($query);
+						$result_update = $db->execute();
+						
+					}
+				}
+				//insert new
+				else{
+					
+					$i=0;
+					$obj = new stdClass();
+					$obj->student_id = $item->id;
+					$obj->created_by = $item->created_by;
+					$obj->creation_date = $item->creation_date;
+					$obj->published = 1;
+					//paid or not paid
+					$obj->status = 0;
+					
+					for ( $i=0;$i<count($classperiod_id);$i++ ){
+						
+						$obj->classperiod_id = $classperiod_id[$i];
+						$date = DateTime::createFromFormat('d/m/Y', $register_date[$i]);
+						$obj->register_date	 = $date->format('Y-m-d');
+						
+						$result_insert = JFactory::getDbo()->insertObject('#__upi_student_classperiods', $obj);
+						
+					}
+				}
+				
+				
 			}
 		}
 		else

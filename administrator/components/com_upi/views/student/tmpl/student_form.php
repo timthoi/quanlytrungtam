@@ -622,92 +622,29 @@ $select_1 = preg_replace('/\s+/', ' ', trim($select_1));
 			 })
 			
 			 
-			/*var list_period_id = '<?php echo isset($this->item->period_id)?$this->item->period_id:''?>';
-			list_period_id = jQuery.parseJSON( list_period_id );
+			var list_class = '<?php echo json_encode(isset($this->item->list_class)?$this->item->list_class:"")?>';
+			list_class = jQuery.parseJSON( list_class );
 			
-			if ( list_period_id )
-			for(i=0;i<list_period_id.length;i++){
-				 console.log(list_period_id[i]['period_id']);
+			if ( list_class )
+			for(i=0;i<list_class.length;i++){
 				
-				$('.template_period tbody').append(html_template_period);
-				var period_element = $('.template_period tbody').find("tr.template_period_tr:last select[name*='period_id']");
-				var teacher_element = $('.template_period tbody').find("tr.template_period_tr:last select[name*='teacher_id']");
-				var tutor_element = $('.template_period tbody').find("tr.template_period_tr:last select[name*='tutor_id']");
+				$('.template_class tbody').append(html_template_class);
 				
-				$('.template_period tbody').find("tr.template_period_tr:last select").removeAttr('id');		
-				period_element.chosen({
-					placeholder_text_single: '- Chọn Thời Gian -'
+				var classperiod_id = $('.template_class tbody').find("tr.template_class_tr:last select[name*='classperiod_id']");
+				var register_date = $('.template_class tbody').find("tr.template_class_tr:last input[name*='register_date']");	
+				
+				$('.template_class tbody').find("tr.template_class_tr:last select").removeAttr('id');	
+
+				classperiod_id.chosen({
+					placeholder_text_single: '- Chọn Lớp -'
 				});
-				period_element.val(list_period_id[i]['period_id']);
-				period_element.trigger("liszt:updated");
-			
-				teacher_element.chosen({
-					placeholder_text_multiple: '- Chọn Giáo Viên -'
-				});
-				teacher_element.val(list_period_id[i]['teacher_id']);
-				teacher_element.trigger("liszt:updated");
+
+				register_date.val(list_class[i]['register_date']);
 				
+				classperiod_id.val(list_class[i]['classperiod_id']);
+				classperiod_id.trigger("liszt:updated");
 				
-				tutor_element.chosen({
-					placeholder_text_multiple: '- Chọn Trợ Giảng -'
-				});
-				tutor_element.val(list_period_id[i]['tutor_id']);
-				tutor_element.trigger("liszt:updated");
 			 }
-			 
-			
-			 
-			function call_ajax_getClassList(data,url){
-				var list = '';
-				jQuery.ajax({
-					 type: "POST",
-					 async: false,
-					 url: url,
-					 data: data,
-					 success: function(data){
-						 list = jQuery.parseJSON( data );
-						 //console.log(JSON.stringify(data));
-					}
-				});
-				return list;
-			}    
-		
-			//change course
-			 $("#jform_course_id").chosen().change(function(event){				
-				var data = 'course_id=' + $(this).val();
-				var url = window.location.protocol + "//" + window.location.host + window.location.pathname + '?option=com_upi&task=course.ajax_getClassList';
-				
-				//update value for class dropdown
-				var list_class = call_ajax_getClassList(data,url);
-				if ( list_class.length ) {
-					console.log(list_class);
-					$( "#jform_class_id" ).chosen('destroy');  
-					$( "#jform_class_id" ).replaceWith( list_class );
-					$( "#jform_class_id" ).chosen();
-				}
-				
-			 });  
-			
-			 
-			 $( "#add_period" ).on( "click", function(e) {
-				$('.template_period tbody').append(html_template_period);
-				$('.template_period tbody').find("tr.template_period_tr:last select").removeAttr('id');		
-				$('.template_period tbody').find("tr.template_period_tr:last select[name*='period_id']").chosen({
-					placeholder_text_single: '- Chọn Thời Gian -'
-				});
-				$('.template_period tbody').find("tr.template_period_tr:last select[name*='teacher_id']").chosen({
-					placeholder_text_multiple: '- Chọn Giáo Viên -'
-				});
-				$('.template_period tbody').find("tr.template_period_tr:last select[name*='tutor_id']").chosen({
-					placeholder_text_multiple: '- Chọn Trợ Giảng -'
-				});
-				e.preventDefault();
-			 })
-			
-			 $( ".remove_field" ).live( "click", function() {
-				 $(this).closest('tr').remove();
-			 })
-			 */
 			 
 		 });
 	})(jQuery);   

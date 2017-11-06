@@ -98,15 +98,15 @@ class UpiViewStudent extends UpiClassView
 		$model_grade_id = CkJModel::getInstance('Grades', 'UpiModel');
 		$model_grade_id->addGroupOrder("a.title");
 		$lists['fk']['grade_id'] = $model_grade_id->getItems();
-
-		// Class ID > Title
-		/*$modelClass_id = CkJModel::getInstance('classes', 'UpiModel');
-		$modelClass_id->set('context', $model->get('context'));
-		$this->list_class = $modelClass_id->getItems();*/
-
-		$currentClasses = UpiHelper::getCurrentClasses();
-		$lists['fk']['classperiod_id'] = $currentClasses;
-
+	
+	
+		$lists['fk']['classperiod_id'] = UpiHelper::getCurrentClasses();
+		
+		$this->item->list_class ='';
+		if ( isset($this->item->id) )
+			$this->item->list_class = UpiHelper::getClassperiods($this->item->id);
+	
+	
 	}
 
 

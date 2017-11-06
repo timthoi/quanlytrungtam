@@ -29,13 +29,7 @@ $fieldSets = $this->form->getFieldsets();
 
 <?php $fieldSet = $this->form->getFieldset('staff.form');?>
 <fieldset class="fieldsform form-horizontal">
-	<ul class="nav nav-tabs">
-	  <li class="active"><a data-toggle="tab" href="#menu1">Thông Tin Chung</a></li>
-	  <li><a data-toggle="tab" href="#menu2">Địa Chỉ & Số Liên Lạc Khác</a></li>
-	  <li><a data-toggle="tab" href="#menu3">Thông Tin Trường</a></li>
-	</ul>
-	<div class="tab-content">
-	  <div id="menu1" class="tab-pane fade in active">
+	
 		<h3>Thông Tin Chung</h3>
 		<?php
 		// Profile Pic
@@ -194,9 +188,7 @@ $fieldSets = $this->form->getFieldsets();
 		</div>
 		<?php echo(UpiHelperHtmlValidator::loadValidator($field)); ?>
 		
-	  </div>
-		  <!--Address & Contact -->
-		  <div id="menu2" class="tab-pane fade">
+	 
 			<h3>Địa Chỉ & Số Liên Lạc Khác</h3>
 			
 			<?php
@@ -273,10 +265,9 @@ $fieldSets = $this->form->getFieldsets();
 				</div>
 			</div>
 			<?php echo(UpiHelperHtmlValidator::loadValidator($field)); ?>
-		  </div>
 		
 		<!--Thông Tin Trường -->
-		<div id="menu3" class="tab-pane fade">
+		
 			<h3>Thông Tin Trường</h3>
 			<?php
 			// Joining Date
@@ -323,10 +314,7 @@ $fieldSets = $this->form->getFieldsets();
 			</div>
 			<?php echo(UpiHelperHtmlValidator::loadValidator($field)); ?>
 
-		</div>
-	</div>
-	
-	
+		
 	
 	<?php
 	// Published

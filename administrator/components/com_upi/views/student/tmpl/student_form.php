@@ -495,6 +495,26 @@ else
 		<?php echo(UpiHelperHtmlValidator::loadValidator($field)); ?>
 	</div>
 	<!-- menu 4 -->
+
+	<?php
+	// register class - ClassPeriod
+	
+	?>
+	<input class="btt-add" type="button" value="<?php echo JText::_('UPI_FIELD_ADD_CLASS')?>" id="add_class"/>
+	<p class="guide">Nhập Lớp và Ngày Đăng Ký trước -> Save -> Đóng Học Phí</p>
+	
+	<table style="width:100%" class='template template_class table-hover table-no-border'>
+		<tr class='template_class_head'>
+			<th></th>
+			<th style="text-align:left"><?php echo JText::_('UPI_FIELD_CLASS_ALIAS_TITLE')?></th>
+			<th style="text-align:left"><?php echo JText::_('UPI_FIELD_FEE')?></th> 
+			<th style="text-align:left"><?php echo JText::_('UPI_FIELD_REGISTER_DATE')?></th>
+			<th style="text-align:left"></th>
+		</tr>
+	</table> 
+	 
+	 <!--
+	</table>
 	
 		<table class="table table-hover table-no-border">
 		
@@ -530,7 +550,7 @@ else
 		  </tr>
 		</tbody>
 	  </table>
-		
+	-->	
 		
 
 	
@@ -555,9 +575,147 @@ else
 
 </fieldset>
 
+
+<?php 
+$select_1 = JHTML::_('select.genericlist',$this->lists['fk']['classperiod_id'], 'classperiod_id[]', '', 'id', 'alias');
+$select_1 = preg_replace('/\s+/', ' ', trim($select_1));
+
+?>
+
+<script>
+	(function($) {
+		 $(document).ready(function(){
+			//init
+			var select_1 = '<?php echo $select_1?>';
+			var current_date = '<?php echo date("d/m/Y")?>';
+		
+			
+			var html_template_class = '<tr class="template template_class_tr">'
+			+ '<td><a href="#" class="remove_field"><i class="icon-remove"></i></a></td>'
+			+ '<td>'+ select_1 +'</td>'
+			+ '<td>'+ '<span class="label">Chưa Đóng</span>' +'</td>'
+			+ '<td><input type="text" name="register_date[]" class="input-small" placeholder="dd/mm/yyyy"></td>'
+			+ '<td><a href="#" class="view_fee"><i class="icon-eye"></i>Xem Chi Tiết</a> | <a href="#" class="add_fee"><i class="icon-plus"></i>Đóng Học Phí</td>'
+			+ '</tr>';
+
+			 $( "#add_class" ).on( "click", function(e) {
+				$('.template_class tbody').append(html_template_class);
+
+				var classperiod_id = $('.template_class tbody').find("tr.template_class_tr:last select[name*='classperiod_id']");
+				var register_date = $('.template_class tbody').find("tr.template_class_tr:last input[name*='register_date']");	
+
+
+				$('.template_class tbody').find("tr.template_class_tr:last select").removeAttr('id');	
+
+				classperiod_id.chosen({
+					placeholder_text_single: '- Chọn Lớp -'
+				});
+
+				register_date.val(current_date);
+
+				e.preventDefault();
+			 })
+			
+			 $( ".remove_field" ).live( "click", function(e) {
+				$(this).closest('tr').remove();
+				e.preventDefault();
+			 })
+			
+			 
+			/*var list_period_id = '<?php echo isset($this->item->period_id)?$this->item->period_id:''?>';
+			list_period_id = jQuery.parseJSON( list_period_id );
+			
+			if ( list_period_id )
+			for(i=0;i<list_period_id.length;i++){
+				 console.log(list_period_id[i]['period_id']);
+				
+				$('.template_period tbody').append(html_template_period);
+				var period_element = $('.template_period tbody').find("tr.template_period_tr:last select[name*='period_id']");
+				var teacher_element = $('.template_period tbody').find("tr.template_period_tr:last select[name*='teacher_id']");
+				var tutor_element = $('.template_period tbody').find("tr.template_period_tr:last select[name*='tutor_id']");
+				
+				$('.template_period tbody').find("tr.template_period_tr:last select").removeAttr('id');		
+				period_element.chosen({
+					placeholder_text_single: '- Chọn Thời Gian -'
+				});
+				period_element.val(list_period_id[i]['period_id']);
+				period_element.trigger("liszt:updated");
+			
+				teacher_element.chosen({
+					placeholder_text_multiple: '- Chọn Giáo Viên -'
+				});
+				teacher_element.val(list_period_id[i]['teacher_id']);
+				teacher_element.trigger("liszt:updated");
+				
+				
+				tutor_element.chosen({
+					placeholder_text_multiple: '- Chọn Trợ Giảng -'
+				});
+				tutor_element.val(list_period_id[i]['tutor_id']);
+				tutor_element.trigger("liszt:updated");
+			 }
+			 
+			
+			 
+			function call_ajax_getClassList(data,url){
+				var list = '';
+				jQuery.ajax({
+					 type: "POST",
+					 async: false,
+					 url: url,
+					 data: data,
+					 success: function(data){
+						 list = jQuery.parseJSON( data );
+						 //console.log(JSON.stringify(data));
+					}
+				});
+				return list;
+			}    
+		
+			//change course
+			 $("#jform_course_id").chosen().change(function(event){				
+				var data = 'course_id=' + $(this).val();
+				var url = window.location.protocol + "//" + window.location.host + window.location.pathname + '?option=com_upi&task=course.ajax_getClassList';
+				
+				//update value for class dropdown
+				var list_class = call_ajax_getClassList(data,url);
+				if ( list_class.length ) {
+					console.log(list_class);
+					$( "#jform_class_id" ).chosen('destroy');  
+					$( "#jform_class_id" ).replaceWith( list_class );
+					$( "#jform_class_id" ).chosen();
+				}
+				
+			 });  
+			
+			 
+			 $( "#add_period" ).on( "click", function(e) {
+				$('.template_period tbody').append(html_template_period);
+				$('.template_period tbody').find("tr.template_period_tr:last select").removeAttr('id');		
+				$('.template_period tbody').find("tr.template_period_tr:last select[name*='period_id']").chosen({
+					placeholder_text_single: '- Chọn Thời Gian -'
+				});
+				$('.template_period tbody').find("tr.template_period_tr:last select[name*='teacher_id']").chosen({
+					placeholder_text_multiple: '- Chọn Giáo Viên -'
+				});
+				$('.template_period tbody').find("tr.template_period_tr:last select[name*='tutor_id']").chosen({
+					placeholder_text_multiple: '- Chọn Trợ Giảng -'
+				});
+				e.preventDefault();
+			 })
+			
+			 $( ".remove_field" ).live( "click", function() {
+				 $(this).closest('tr').remove();
+			 })
+			 */
+			 
+		 });
+	})(jQuery);   
+ </script>   
+
 <script>
    
-    jQuery(function($){
+    /*jQuery(function($){
          //var str= "<input value='' name='email' id='email' placeholder='email@example.com' type='email'> ";
          //$(str).insertBefore( $( "#contents" ) );
          
@@ -570,6 +728,6 @@ else
 				
     			singleClick: true,firstDay: 0
     			});});
-     });});
+     });});*/
      
 </script>

@@ -105,8 +105,8 @@ class UpiViewStudent extends UpiClassView
 		$this->list_class = $modelClass_id->getItems();*/
 
 		$currentClasses = UpiHelper::getCurrentClasses();
-		$this->list_class = $currentClasses;
-		
+		$lists['fk']['classperiod_id'] = $currentClasses;
+
 	}
 
 

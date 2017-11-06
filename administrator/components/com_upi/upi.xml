@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<extension type="component" version="1.6" method="upgrade">
+	<name><![CDATA[upi]]></name>
+	<author><![CDATA[]]></author>
+	<creationDate><![CDATA[26 Oct 2017]]></creationDate>
+	<copyright><![CDATA[]]></copyright>
+	<authorEmail><![CDATA[]]></authorEmail>
+	<authorUrl><![CDATA[]]></authorUrl>
+	<version><![CDATA[]]></version>
+	<license><![CDATA[]]></license>
+	<description><![CDATA[]]></description>
+
+	<files folder="site">
+		<folder>controllers</folder>
+		<folder>css</folder>
+		<folder>files</folder>
+		<folder>images</folder>
+		<folder>layouts</folder>
+		<folder>models</folder>
+		<folder>views</folder>
+		<filename>controller.php</filename>
+		<filename>index.html</filename>
+		<filename>router.php</filename>
+		<filename>upi.php</filename>
+	</files>
+
+	<languages folder="site">
+		<language tag="en-GB">language/en-GB.com_upi.ini</language>
+	</languages>
+
+	<administration>
+
+		<files folder="admin">
+			<folder>classes</folder>
+			<folder>controllers</folder>
+			<folder>css</folder>
+			<folder>dom</folder>
+			<folder>helpers</folder>
+			<folder>images</folder>
+			<folder>js</folder>
+			<folder>layouts</folder>
+			<folder>models</folder>
+			<folder>sql</folder>
+			<folder>tables</folder>
+			<folder>views</folder>
+			<filename>access.xml</filename>
+			<filename>config.xml</filename>
+			<filename>controller.php</filename>
+			<filename>index.html</filename>
+			<filename>upi.php</filename>
+		</files>
+
+		<languages folder="admin">
+			<language tag="en-GB">language/en-GB.com_upi.ini</language>
+			<language tag="en-GB">language/en-GB.com_upi.sys.ini</language>
+		</languages>
+		<menu img="components/com_upi/images/icon-16-upi.png">UPI_MENU_UPI</menu>
+
+		<submenu>
+			<menu img="components/com_upi/images/icon-16-upi_rooms.png" link="option=com_upi&amp;view=rooms">UPI_MENU_ROOMS</menu>
+			<menu img="components/com_upi/images/icon-16-upi_grades.png" link="option=com_upi&amp;view=grades">UPI_MENU_GRADES</menu>
+			<menu img="components/com_upi/images/icon-16-upi_periods.png" link="option=com_upi&amp;view=periods">UPI_MENU_PERIODS</menu>
+			<menu img="components/com_upi/images/icon-16-upi_subjects.png" link="option=com_upi&amp;view=subjects">UPI_MENU_SUBJECTS</menu>
+			<menu img="components/com_upi/images/icon-16-upi_typetests.png" link="option=com_upi&amp;view=typetests">UPI_MENU_TYPETESTS</menu>
+			<menu img="components/com_upi/images/icon-16-upi_courses.png" link="option=com_upi&amp;view=courses">UPI_MENU_COURSES</menu>
+			<menu img="components/com_upi/images/icon-16-upi_courseperiods.png" link="option=com_upi&amp;view=courseperiods">UPI_MENU_COURSEPERIODS</menu>
+			<menu img="components/com_upi/images/icon-16-upi_stafftypes.png" link="option=com_upi&amp;view=stafftypes">UPI_MENU_STAFFTYPES</menu>
+			<menu img="components/com_upi/images/icon-16-upi_staves.png" link="option=com_upi&amp;view=staves">UPI_MENU_STAVES</menu>
+			<menu img="components/com_upi/images/icon-16-upi_classes.png" link="option=com_upi&amp;view=classes">UPI_MENU_CLASSES</menu>
+			<menu img="components/com_upi/images/icon-16-upi_students.png" link="option=com_upi&amp;view=students">UPI_MENU_STUDENTS</menu>
+			<menu img="components/com_upi/images/icon-16-upi_tests.png" link="option=com_upi&amp;view=tests">UPI_MENU_TESTS</menu>
+			<menu img="components/com_upi/images/icon-16-upi_attendanceexcercies.png" link="option=com_upi&amp;view=attendanceexcercies">UPI_MENU_ATTENDANCEEXCERCIES</menu>
+		</submenu>
+	</administration>
+	<scriptfile>script.php</scriptfile>
+
+	<install>
+
+		<sql>
+			<file driver="mysql" charset="utf8">sql/install.mysql.utf8.sql</file>
+		</sql>
+	</install>
+
+	<update>
+
+		<schemas>
+			<schemapath type="mysql">sql/updates/mysql</schemapath>
+		</schemas>
+	</update>
+
+	<uninstall>
+
+		<sql>
+			<file driver="mysql" charset="utf8">sql/uninstall.mysql.utf8.sql</file>
+		</sql>
+	</uninstall>
+</extension>

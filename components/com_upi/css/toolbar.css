@@ -1,0 +1,194 @@
+/**                               ______________________________________________
+*                          o O   |                                              |
+*                 (((((  o      <    Generated with Cook Self Service  V3.0.10  |
+*                ( o o )         |______________________________________________|
+* --------oOOO-----(_)-----OOOo---------------------------------- www.j-cook.pro --- +
+* @version		
+* @package		UPI
+* @subpackage	UPI
+* @copyright	
+* @author		 -  - 
+* @license		
+*
+*             .oooO  Oooo.
+*             (   )  (   )
+* -------------\ (----) /----------------------------------------------------------- +
+*               \_)  (_/
+*/
+
+/**
+* Component icons 48px (Cpanel)
+**/
+.ico-48-upi, .icon-48-upi {
+	background-image:url('../images/icon-48-upi.png');
+}
+.ico-48-upi_rooms, .icon-48-upi_rooms {
+	background-image:url('../images/icon-48-upi_rooms.png');
+}
+.ico-48-upi_grades, .icon-48-upi_grades {
+	background-image:url('../images/icon-48-upi_grades.png');
+}
+.ico-48-upi_periods, .icon-48-upi_periods {
+	background-image:url('../images/icon-48-upi_periods.png');
+}
+.ico-48-upi_subjects, .icon-48-upi_subjects {
+	background-image:url('../images/icon-48-upi_subjects.png');
+}
+.ico-48-upi_typetests, .icon-48-upi_typetests {
+	background-image:url('../images/icon-48-upi_typetests.png');
+}
+.ico-48-upi_courses, .icon-48-upi_courses {
+	background-image:url('../images/icon-48-upi_courses.png');
+}
+.ico-48-upi_courseperiods, .icon-48-upi_courseperiods {
+	background-image:url('../images/icon-48-upi_courseperiods.png');
+}
+.ico-48-upi_stafftypes, .icon-48-upi_stafftypes {
+	background-image:url('../images/icon-48-upi_stafftypes.png');
+}
+.ico-48-upi_staves, .icon-48-upi_staves {
+	background-image:url('../images/icon-48-upi_staves.png');
+}
+.ico-48-upi_classteachers, .icon-48-upi_classteachers {
+	background-image:url('../images/icon-48-upi_classteachers.png');
+}
+.ico-48-upi_classtutors, .icon-48-upi_classtutors {
+	background-image:url('../images/icon-48-upi_classtutors.png');
+}
+.ico-48-upi_classes, .icon-48-upi_classes {
+	background-image:url('../images/icon-48-upi_classes.png');
+}
+.ico-48-upi_students, .icon-48-upi_students {
+	background-image:url('../images/icon-48-upi_students.png');
+}
+.ico-48-upi_classrooms, .icon-48-upi_classrooms {
+	background-image:url('../images/icon-48-upi_classrooms.png');
+}
+.ico-48-upi_tests, .icon-48-upi_tests {
+	background-image:url('../images/icon-48-upi_tests.png');
+}
+.ico-48-upi_attendanceexcercies, .icon-48-upi_attendanceexcercies {
+	background-image:url('../images/icon-48-upi_attendanceexcercies.png');
+}
+.ico-48-upi_testclasses, .icon-48-upi_testclasses {
+	background-image:url('../images/icon-48-upi_testclasses.png');
+}
+.ico-48-upi_testmarks, .icon-48-upi_testmarks {
+	background-image:url('../images/icon-48-upi_testmarks.png');
+}
+.ico-48-upi_cpanel, .icon-48-upi_cpanel {
+	background-image:url('../images/icon-48-upi_cpanel.png');
+}
+
+/**
+* Component icons 16px (Sub Menu)
+**/
+.ico-16-upi, .icon-16-upi {
+	background-image:url('../images/icon-16-upi.png');
+}
+.ico-16-upi_rooms, .icon-16-upi_rooms {
+	background-image:url('../images/icon-16-upi_rooms.png');
+}
+.ico-16-upi_grades, .icon-16-upi_grades {
+	background-image:url('../images/icon-16-upi_grades.png');
+}
+.ico-16-upi_periods, .icon-16-upi_periods {
+	background-image:url('../images/icon-16-upi_periods.png');
+}
+.ico-16-upi_subjects, .icon-16-upi_subjects {
+	background-image:url('../images/icon-16-upi_subjects.png');
+}
+.ico-16-upi_typetests, .icon-16-upi_typetests {
+	background-image:url('../images/icon-16-upi_typetests.png');
+}
+.ico-16-upi_courses, .icon-16-upi_courses {
+	background-image:url('../images/icon-16-upi_courses.png');
+}
+.ico-16-upi_courseperiods, .icon-16-upi_courseperiods {
+	background-image:url('../images/icon-16-upi_courseperiods.png');
+}
+.ico-16-upi_stafftypes, .icon-16-upi_stafftypes {
+	background-image:url('../images/icon-16-upi_stafftypes.png');
+}
+.ico-16-upi_staves, .icon-16-upi_staves {
+	background-image:url('../images/icon-16-upi_staves.png');
+}
+.ico-16-upi_classteachers, .icon-16-upi_classteachers {
+	background-image:url('../images/icon-16-upi_classteachers.png');
+}
+.ico-16-upi_classtutors, .icon-16-upi_classtutors {
+	background-image:url('../images/icon-16-upi_classtutors.png');
+}
+.ico-16-upi_classes, .icon-16-upi_classes {
+	background-image:url('../images/icon-16-upi_classes.png');
+}
+.ico-16-upi_students, .icon-16-upi_students {
+	background-image:url('../images/icon-16-upi_students.png');
+}
+.ico-16-upi_classrooms, .icon-16-upi_classrooms {
+	background-image:url('../images/icon-16-upi_classrooms.png');
+}
+.ico-16-upi_tests, .icon-16-upi_tests {
+	background-image:url('../images/icon-16-upi_tests.png');
+}
+.ico-16-upi_attendanceexcercies, .icon-16-upi_attendanceexcercies {
+	background-image:url('../images/icon-16-upi_attendanceexcercies.png');
+}
+.ico-16-upi_testclasses, .icon-16-upi_testclasses {
+	background-image:url('../images/icon-16-upi_testclasses.png');
+}
+.ico-16-upi_testmarks, .icon-16-upi_testmarks {
+	background-image:url('../images/icon-16-upi_testmarks.png');
+}
+.ico-16-upi_cpanel, .icon-16-upi_cpanel {
+	background-image:url('../images/icon-16-upi_cpanel.png');
+}
+
+/**
+* Icons colors
+**/
+.icon-edit:before {
+	color:#2f96b4;
+}
+.icon-featured:before, .icon-star:before, .icon-star-empty:before, .icon-default:before {
+	color:#f89406;
+}
+.icon-pending:before {
+	color:#f89406;
+}
+.icon-publish:before, .icon-save:before, .icon-ok:before {
+	color:#51a351;
+}
+.icon-unpublish:before, .btn-toolbar .icon-cancel:before {
+	color:#bd362f;
+}
+.icon-not-ok:before, .icon-eye-close:before {
+	color:#bd362f;
+}
+.icon-save-new:before {
+	color:#51a351;
+}
+.icon-ban-circle:before, .icon-minus-sign:before {
+	color:#bd362f;
+}
+.icon-save-copy:before, .btn-toolbar .icon-copy:before {
+	color:#51a351;
+}
+
+/**
+* System
+**/
+span.spinner {
+	background-image:url('../images/icon-16-spinner.gif');
+}
+[class^="icon-32"], [class*=" icon-32"] {
+	background-position:0px 0px; !important;
+}
+
+/**
+* Fixes
+**/
+.jgrid span {
+	padding:0px;
+}
+

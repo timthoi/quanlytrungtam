@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<form>
+
+	<fieldset name="classperiod.form" addfieldpath="/administrator/components/com_upi/models/fields">
+		
+		<field name="teacher_id"
+				alias="_teacher_id_title"
+				label="UPI_LAYOUT_TEACHER"
+				filter="INT"
+				listKey="id"
+				labelKey="title"
+				type="ckcombo"
+				nullLabel="UPI_FILTER_NULL_TEACHER_ID_TITLE"/>
+
+		<field name="tutor_id"
+				alias="_tutor_id_title"
+				label="UPI_LAYOUT_TUTOR"
+				filter="INT"
+				listKey="id"
+				labelKey="title"
+				type="ckcombo"
+				nullLabel="UPI_FILTER_NULL_TUTOR_ID_TITLE"/>
+
+		<field name="room_id"
+				alias="_room_id_title"
+				label="UPI_LAYOUT_ROOM"
+				filter="INT"
+				listKey="id"
+				labelKey="title"
+				type="ckcombo"
+				nullLabel="UPI_FILTER_NULL_ROOM_ID_TITLE"/>
+
+		<field name="period_id"
+				alias="_period_id_title"
+				label="UPI_LAYOUT_PERIOD"
+				filter="STRING"
+				type="hidden"/>
+
+		<field name="course_id"
+				alias="_course_id_title"
+				label="UPI_FIELD_COURSE_ID_TITLE"
+				filter="INT"
+				listKey="id"
+				labelKey="title"
+				type="ckcombo"
+				nullLabel="UPI_FILTER_NULL_COURSE_ID_TITLE"
+				required="true"
+				class="validate[required]"/>
+
+		<field name="class_id"
+				alias="_class_id_title"
+				label="UPI_LAYOUT_CLASS"
+				filter="INT"
+				listKey="id"
+				labelKey="alias"
+				type="ckcombo"
+				nullLabel="UPI_FILTER_NULL_CLASS_ID_TITLE"
+				required="true"
+				class="validate[required]"/>
+		
+		<field name="register_date"
+				alias="register_date"
+				label="UPI_FIELD_START_DATE"
+				filter="STRING"
+				type="ckcalendar"
+				default="NOW"
+				format="d-m-Y"
+				required="true"
+				class="validate[required]"/>
+
+		<field name="note"
+				alias="note"
+				label="UPI_FIELD_NOTE"
+				filter="STRING"
+				type="cktextarea"/>
+
+		<field name="published"
+				alias="published"
+				label="UPI_FIELD_PUBLISHED"
+				filter="INT"
+				access="core.edit.state"
+				listKey="value"
+				default="1"
+				type="ckstate">
+			<option value="0" icon="icomoon-cancel" color="danger">UPI_FIELDS_BOOL_NO</option>
+			<option value="1" icon="icomoon-ok" color="success">UPI_FIELDS_BOOL_YES</option>
+		</field>
+	</fieldset>
+
+	<fieldset name="default.filters" addfieldpath="/administrator/components/com_upi/models/fields">
+
+		<field name="filter_subject_id"
+				listKey="id"
+				labelKey="title"
+				type="ckcombo"
+				submit="true"
+				nullLabel="UPI_FILTER_NULL_SUBJECT_ID_TITLE"
+				class="span-2 element-filter"
+				label="UPI_JSEARCH_SUBJECT_ID_TITLE"
+				ui="chosen"/>
+
+		<field name="filter_grade_id"
+				listKey="id"
+				labelKey="title"
+				type="ckcombo"
+				submit="true"
+				nullLabel="UPI_FILTER_NULL_GRADE_ID_TITLE"
+				class="span-2 element-filter"
+				label="UPI_JSEARCH_GRADE_ID_TITLE"
+				ui="chosen"/>
+
+		<field name="filter_creation_date_from"
+				placeholder="UPI_FILTER_CREATION_DATE_CREATION_DATE_FROM"
+				type="ckcalendar"
+				submit="true"
+				format="d-m-Y H:i"
+				label="UPI_JSEARCH_CREATION_DATE"
+				class="element-filter input-small"
+				ui="chosen"/>
+
+		<field name="filter_creation_date_to"
+				placeholder="UPI_FILTER_CREATION_DATE_CREATION_DATE_TO"
+				type="ckcalendar"
+				submit="true"
+				format="d-m-Y H:i"
+				label="UPI_JSEARCH_CREATION_DATE"
+				class="element-filter input-small"
+				ui="chosen"/>
+
+		<field name="search_search"
+				type="cksearch"
+				placeholder="UPI_FILTER_NULL_TITLE_ALIAS"
+				label="UPI_JSEARCH_TITLE_ALIAS"
+				class="element-filter element-search search-query"
+				ui="chosen"/>
+
+		<field name="sortTable"
+				type="cksort"
+				responsive="hidden-phone"
+				submit="true"
+				nullLabel="JGLOBAL_SORT_BY"
+				class="span-2 element-filter"
+				label="Sort by"
+				ui="chosen"/>
+
+		<field name="directionTable"
+				type="ckdirection"
+				responsive="hidden-phone"
+				submit="true"
+				nullLabel="JFIELD_ORDERING_DESC"
+				class="span-2 element-filter"
+				label="Direction"
+				ui="chosen"/>
+
+		<field name="limit"
+				type="cklimit"
+				submit="true"
+				class="element-filter"
+				label="Limit"
+				ui="chosen"/>
+	</fieldset>
+
+	<fieldset name="modal.filters" addfieldpath="/administrator/components/com_upi/models/fields">
+
+		<field name="limit"
+				type="cklimit"
+				submit="true"
+				class="element-filter"
+				label="Limit"
+				ui="chosen"/>
+	</fieldset>
+</form>

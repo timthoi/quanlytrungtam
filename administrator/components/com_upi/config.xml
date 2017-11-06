@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<config>
+
+	<fieldset name="configuration"
+			label="UPI_CONFIG_COMPONENT_CONFIGURATION"
+			description="UPI_CONFIG_COMPONENT_CONFIGURATION_1"
+			addfieldpath="/administrator/components/com_upi/models/fields">
+
+		<field name="upload_maxsize"
+				label="UPI_FIELD_UPLOAD_MAX_SIZE"
+				filter="STRING"
+				description="UPI_FIELD_UPLOAD_MAX_SIZE_INFORMATION"
+				type="cktext"/>
+
+		<field name="upload_check_mime"
+				default="1"
+				label="UPI_FIELD_CHECK_MIME_TYPE"
+				filter="INT"
+				description="UPI_FIELD_UPLOAD_CHECK_MIME"
+				listKey="value"
+				type="ckradio"
+				viewType="both">
+			<option value="0" icon="icomoon-cancel" color="danger">UPI_FIELDS_BOOL_NO</option>
+			<option value="1" icon="icomoon-ok" color="success">UPI_FIELDS_BOOL_YES</option>
+		</field>
+
+		<field name="trash_dir"
+				default="[COM_ADMIN]/images/trash"
+				label="UPI_FIELD_TRASH_DIR"
+				filter="STRING"
+				description="UPI_FIELD_TRASH_DIR_INFORMATION"
+				type="cktext"/>
+
+		<field name="upload_dir_staves_profile_pic"
+				default="[COM_SITE]/files/staves_profile_pic"
+				label="UPI_FIELD_UPLOAD_DIR_STAVES_PROFILE_PIC"
+				filter="STRING"
+				description="UPI_FIELD_UPLOAD_DIR_INFORMATION"
+				type="cktext"/>
+
+		<field name="upload_dir_tests_document"
+				default="[COM_SITE]/files/tests_document"
+				label="UPI_FIELD_UPLOAD_DIR_TESTS_DOCUMENT"
+				filter="STRING"
+				description="UPI_FIELD_UPLOAD_DIR_INFORMATION"
+				type="cktext"/>
+	</fieldset>
+
+	<fieldset name="permissions"
+			label="UPI_CONFIG_PERMISSIONS"
+			description="UPI_CONFIG_DEFAULT_PERMISSIONS_USED_FOR_ALL_CONTENT_IN_THIS_COMPONENT"
+			addfieldpath="/administrator/components/com_upi/models/fields">
+
+		<field name="rules"
+				label="UPI_FIELD_PERMISSIONS"
+				filter="rules"
+				type="rules"
+				validate="rules"
+				section="component"
+				component="com_upi"/>
+	</fieldset>
+</config>

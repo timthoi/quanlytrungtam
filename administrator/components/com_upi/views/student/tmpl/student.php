@@ -86,7 +86,7 @@ JDom::_('html.toolbar');
 				<button type="button" class="btn btn-default" data-dismiss="modal"><span class="icon-cancel" aria-hidden="true"></span>Cancel</button>
 		  </div>
 		<input type="hidden" class='student_id' name="student_id" value="">	
-		<input type="hidden" class='classperiod_id' name="classperiod_id" value="">	
+		<input type="hidden" class='student_classperiod_id' name="student_classperiod_id" value="">	
 			
 		</div>
 	  </div>
@@ -113,7 +113,7 @@ JDom::_('html.toolbar');
 (function($) {
 $(document).ready(function(){
 	$( ".add_fee" ).on( "click", function(e) {
-		var classperiod_id 	= $(this).parents('.template_class_tr').find("select[name*='classperiod_id']").val();
+		var student_classperiod_id 	= $(this).parents('.template_class_tr').find("select[name*='classperiod_id']").val();
 		var student_id 		= $(this).parents('#adminForm').find("#id").val();
 		var fee_status 		= $(this).parents('.template_class_tr').find(".fee_status .label").text();
 		
@@ -121,7 +121,7 @@ $(document).ready(function(){
 		
 		$('#fee_modal').find("input[name*='cid']").val(student_id);
 		$('#fee_modal').find('.student_id').val(student_id);
-		$('#fee_modal').find('.classperiod_id').val(classperiod_id);
+		$('#fee_modal').find('.student_classperiod_id').val(student_classperiod_id);
 		$('#fee_modal').find('.fee_status .label').text(fee_status);
 		$('#fee_modal').find('.fee_remaining').val(0);
 		

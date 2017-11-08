@@ -319,7 +319,7 @@ class UpiControllerStudent extends UpiClassControllerItem
 					
 					
 		$student_id = $jinput->get('student_id', null, null);
-		$classperiod_id = $jinput->get('classperiod_id', null, null);
+		$classperiod_id = $jinput->get('student_classperiod_id', null, null);
 		
 		$result = false;
 		
@@ -347,7 +347,7 @@ class UpiControllerStudent extends UpiClassControllerItem
 			if ($result) JFactory::getApplication()->enqueueMessage('Đóng Học Phí Thành Công');
 			
 		}else{
-			JFactory::getApplication()->enqueueMessage('Điền Thông Tin Học Phí');
+			JFactory::getApplication()->enqueueMessage('Điền Thông Tin Học Phí','error');
 		}
 		
 		$this->applyRedirection($result, array(

@@ -500,7 +500,7 @@ else
 	// register class - ClassPeriod
 	
 	?>
-	<input class="btt-add" type="button" value="<?php echo JText::_('UPI_FIELD_ADD_CLASS')?>" id="add_class"/>
+	<input class="btt-add" type="button" value="+ <?php echo JText::_('UPI_FIELD_ADD_CLASS')?>" id="add_class"/>
 	<p class="guide">Nhập Lớp và Ngày Đăng Ký trước -> Save -> Đóng Học Phí</p>
 	
 	<table style="width:100%" class='template template_class table-hover table-no-border'>
@@ -513,47 +513,6 @@ else
 		</tr>
 	</table> 
 	 
-	 <!--
-	</table>
-	
-		<table class="table table-hover table-no-border">
-		
-		<tbody>
-		  <tr>
-			<td><?php echo JText::_('UPI_FIELD_COURSE_ID_TITLE')?></td>
-			<td><?php echo UpiHelper::getCurrentCourseTitle();?></td>
-		  </tr>
-		  <tr>
-			<td><?php echo JText::_('UPI_FIELD_REGISTER_DATE')?></td>
-			<td>
-				<input type="text" id="jform_register_date" name="register_date" class="input-small" value="" size="32" placeholder="dd/mm/yyyy"><a id="jform_register_date-btn" class="btn" style="cursor:pointer;" type="button"><i class="icon-calendar icomoon "></i></a>
-				
-			</td>
-		  </tr>
-		  <tr>
-			<td><?php echo JText::_('UPI_LAYOUT_CLASS')?></td>
-			<td>
-                <select name="">               
-                    <option value="0"><?php echo JText::_('UPI_FILTER_NULL_CLASS_ID_TITLE')?></option>;
-                    <?php 
-                       
-                       for($j=0; $j< count($this->list_class);$j++): 
-                           
-                    ?>		
-                            <option value="<?php echo $this->list_class[$j]->alias;?>"><?php echo $this->list_class[$j]->alias;  ?></option>
-                     <?php endfor;?>
-                   
-                </select> 
-				
-           
-			</td>
-		  </tr>
-		</tbody>
-	  </table>
-	-->	
-		
-
-	
 	
 
 	<?php
@@ -593,7 +552,7 @@ $select_1 = preg_replace('/\s+/', ' ', trim($select_1));
 			var html_template_class = '<tr class="template template_class_tr">'
 			+ '<td><a href="#" class="remove_field"><i class="icon-remove"></i></a></td>'
 			+ '<td>'+ select_1 +'</td>'
-			+ '<td>'+ '<span class="label">Chưa Đóng</span>' +'</td>'
+			+ '<td class="fee_status">'+ '<span class="label">Chưa Đóng</span>' +'</td>'
 			+ '<td><input type="text" name="register_date[]" class="input-small" placeholder="dd/mm/yyyy"></td>'
 			+ '<td><a href="#" class="view_fee"><i class="icon-eye"></i>Xem Chi Tiết</a> | <a href="#" class="add_fee"><i class="icon-plus"></i>Đóng Học Phí</td>'
 			+ '</tr>';
@@ -649,22 +608,3 @@ $select_1 = preg_replace('/\s+/', ' ', trim($select_1));
 		 });
 	})(jQuery);   
  </script>   
-
-<script>
-   
-    /*jQuery(function($){
-         //var str= "<input value='' name='email' id='email' placeholder='email@example.com' type='email'> ";
-         //$(str).insertBefore( $( "#contents" ) );
-         
-         $(document).ready(function(){
-            window.addEvent('domready', function() {if($("jform_register_date")) Calendar.setup({
-    			inputField: "jform_register_date",
-    			ifFormat: "%d/%m/%Y",	// Trigger for the calendar (button ID)
-    			button: "jform_register_date-btn",
-    			align: "B2",
-				
-    			singleClick: true,firstDay: 0
-    			});});
-     });});*/
-     
-</script>

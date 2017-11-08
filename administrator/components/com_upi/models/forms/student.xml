@@ -69,7 +69,7 @@
 		<field name="joining_date"
 				alias="joining_date"
 				label="UPI_FIELD_JOINING_DATE"
-				filter="STRING"
+				
 				type="ckcalendar"
 				default="NOW"
 				format="d-m-Y"/>

@@ -904,7 +904,6 @@ class UpiHelper
 				->select($db->quoteName('a.classperiod_id'))
 				->select($db->quoteName('a.register_date'))
 				->select($db->quoteName('a.note'))
-				->select($db->quoteName('a.fee_detail'))
 				->select($db->quoteName('a.creation_date'))
 				->select($db->quoteName('a.created_by'))
 		        ->from($db->quoteName('#__upi_student_classperiods', 'a'))
@@ -920,6 +919,36 @@ class UpiHelper
 				$results[$i]->register_date = date("d/m/Y", strtotime($results[$i]->register_date)); 
 				$i++;
 			}
+	    else:
+	    	$application = JFactory::getApplication();
+	    	$application->enqueueMessage(JText::_('ERROR_COURSE_ACTIVE'), 'error');
+			$url_redirect = JURI::current().'index.php?option=com_upi&view=courses&layout=default';
+			JFactory::getApplication()->redirect($url_redirect);
+        endif;
+
+	
+		return $results;
+	}
+	
+	public static function getFee($student_id, $classperiod_id){
+		$course = self::getActiveCourse();
+
+		if ( $course ):
+
+			$db = JFactory::getDbo();
+			$query = $db->getQuery(true);
+			$query
+				->select($db->qn('a.id'))
+				->select($db->qn('a.fee_detail'))
+				->select($db->qn('a.status'))
+		        ->from($db->qn('#__upi_student_classperiods', 'a'))
+				->where($db->qn('a.student_id') . ' = '.$db->q($student_id))
+				->where($db->qn('a.published') . ' = 1')
+				->where($db->qn('a.classperiod_id') . ' = '.$db->q($classperiod_id));
+				
+			$db->setQuery($query);		
+			
+	        $results = $db->loadObject();
 	    else:
 	    	$application = JFactory::getApplication();
 	    	$application->enqueueMessage(JText::_('ERROR_COURSE_ACTIVE'), 'error');

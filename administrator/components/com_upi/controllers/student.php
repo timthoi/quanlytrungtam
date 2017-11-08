@@ -306,6 +306,57 @@ class UpiControllerStudent extends UpiClassControllerItem
 		return $jinput->get('layout', 'student', 'CMD');
 	}
 
+	
+	public function save_fee(){
+		
+		
+		JSession::checkToken() or JSession::checkToken('get') or jexit(JText::_('JINVALID_TOKEN'));
+		$jinput = JFactory::getApplication()->input;
+		$feeValues = $jinput->getArray(array('fee_paid' => '', 
+					'fee_remaining' => '', 
+					'fee_date' => '',
+					'fee_note' => ''));
+					
+					
+		$student_id = $jinput->get('student_id', null, null);
+		$classperiod_id = $jinput->get('classperiod_id', null, null);
+		
+		$result = false;
+		
+		if ( $feeValues['fee_paid'] && $feeValues['fee_date'] && $student_id && $classperiod_id ){
+			
+			$fee = UpiHelper::getFee($student_id, $classperiod_id);
+			
+			$fee_current = json_decode($fee->fee_detail, true);
+			if ( !$fee_current )  $fee_current = array();
+			$fee_current[] = $feeValues;
+			
+			//join with json
+			
+			$fee_detail = json_encode($fee_current);
+			$status = 0;
+			if ( (int)$feeValues['fee_remaining'] === 0 ) $status = 1;
+			
+			
+			$object = new stdClass();
+			$object->id = $fee->id;
+			$object->fee_detail = $fee_detail;
+			$object->status = $status;
+			
+			$result = JFactory::getDbo()->updateObject('#__upi_student_classperiods', $object, 'id');
+			if ($result) JFactory::getApplication()->enqueueMessage('Đóng Học Phí Thành Công');
+			
+		}else{
+			JFactory::getApplication()->enqueueMessage('Điền Thông Tin Học Phí');
+		}
+		
+		$this->applyRedirection($result, array(
+			'stay',
+			'com_upi.student.student'
+		), array(
+			'cid[]' => $student_id
+		));
+	}
 	/**
 	* Method to save an element.
 	*
@@ -315,6 +366,7 @@ class UpiControllerStudent extends UpiClassControllerItem
 	*
 	* @return	void
 	*/
+	
 	public function save($key = null, $urlVar = null)
 	{
 		JSession::checkToken() or JSession::checkToken('get') or jexit(JText::_('JINVALID_TOKEN'));
@@ -322,6 +374,11 @@ class UpiControllerStudent extends UpiClassControllerItem
 		$model = $this->getModel();
 		$item = $model->getItem();
 		$result = false;
+		
+		/* $jinput = JFactory::getApplication()->input;
+		$data = $jinput->post->getArray();
+		var_dump($data);die; */
+		
 		if ($model->canEdit($item, true))
 		{
 			$result = parent::save();
@@ -352,7 +409,7 @@ class UpiControllerStudent extends UpiClassControllerItem
 					$diff_arr_1 = array_diff($arr_1, $arr_2);
 					$diff_arr_2 = array_diff($arr_2, $arr_1);
 					$join_arr = array_merge($common_arr,$diff_arr_2);
-					
+				
 					
 					if ( $diff_arr_1!=$diff_arr_2 ){
 						//delete old
@@ -388,13 +445,14 @@ class UpiControllerStudent extends UpiClassControllerItem
 					}
 					//update
 					for ( $i=0;$i<count($join_arr);$i++ ){
+						//if (!$register_date[$i] ) $register_date[$i] = date('d/m/Y');
 						$date = DateTime::createFromFormat('d/m/Y', $register_date[$i]);
 						
 						$db = JFactory::getDbo();
 						$query = $db->getQuery(true);
 						// Fields to update.
 						$fields = array(
-							$db->quoteName('register_date') . ' = '.$db->quote( $date->format('Y-m-d')),
+							$db->qn('register_date') . ' = '.$db->quote( $date->format('Y-m-d')),
 						);
 
 						// Conditions for which records should be updated.
@@ -437,7 +495,7 @@ class UpiControllerStudent extends UpiClassControllerItem
 		}
 		else
 			JError::raiseWarning( 403, JText::sprintf('ACL_UNAUTORIZED_TASK', JText::_('UPI_JTOOLBAR_SAVE')) );
-
+		
 		$this->_result = $result;
 
 		//Define the redirections

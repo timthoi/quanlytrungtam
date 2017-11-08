@@ -357,6 +357,7 @@ class UpiModelStudent extends UpiClassModelItem
 	public function save($data)
 	{
 		//Convert from a non-SQL formated date (birthday)
+	
 		$data['birthday'] = UpiHelperDates::getSqlDate($data['birthday'], array('Y-m-d'), true, 'USER_UTC');
 
 		//Convert from a non-SQL formated date (joining_date)
